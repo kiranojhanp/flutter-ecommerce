@@ -37,7 +37,7 @@ class _AddressPageState extends State<AddressPage> {
         builder: (BuildContext context, Widget child, MainModel model) {
       return Scaffold(
           appBar: AppBar(
-              title: Text('Delivery Address'),
+              title: Text('Review Order'),
               bottom: model.isLoading
                   ? PreferredSize(
                       child: LinearProgressIndicator(),
@@ -286,86 +286,88 @@ class _AddressPageState extends State<AddressPage> {
                           width: 10,
                         ),
                         Expanded(
-                            child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          mainAxisSize: MainAxisSize.min,
-                          children: <Widget>[
-                            Container(
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: <Widget>[
-                                  Expanded(
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(
-                                          right: 10.0, top: 10.0),
-                                      child: RichText(
-                                        text: TextSpan(children: [
-                                          TextSpan(
-                                            text:
-                                                '${widget.lineItems[index].variant.name.split(' ')[0]} ',
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 16.0,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                          TextSpan(
-                                            text: widget
-                                                .lineItems[index].variant.name
-                                                .substring(
-                                                    widget.lineItems[index]
-                                                            .variant.name
-                                                            .split(' ')[0]
-                                                            .length +
-                                                        1,
-                                                    widget.lineItems[index]
-                                                        .variant.name.length),
-                                            style: TextStyle(
-                                                fontSize: 15,
-                                                color: Colors.black),
-                                          ),
-                                        ]),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(height: 10),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 20.0),
-                              child: Container(
-                                alignment: Alignment.topLeft,
+                            child: Container(
+                          height: 150.0,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisSize: MainAxisSize.max,
+                            children: <Widget>[
+                              Container(
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: <Widget>[
-                                    Text(
-                                      'Qty: ${widget.lineItems[index].quantity.toString()}',
-                                      textAlign: TextAlign.left,
-                                      style: TextStyle(
-                                          color: Colors.grey.shade700,
-                                          fontWeight: FontWeight.normal,
-                                          fontSize: 17),
-                                    ),
-                                    Container(
-                                      padding: EdgeInsets.only(right: 12.0),
-                                      alignment: Alignment.topLeft,
-                                      child: Text(
-                                        widget.lineItems[index].variant
-                                            .displayPrice,
-                                        textAlign: TextAlign.left,
-                                        style: TextStyle(
-                                            color: Colors.red,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 18),
+                                    Expanded(
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                            right: 10.0, top: 10.0),
+                                        child: RichText(
+                                          text: TextSpan(children: [
+                                            TextSpan(
+                                              text:
+                                                  '${widget.lineItems[index].variant.name.split(' ')[0]} ',
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontSize: 16.0,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            TextSpan(
+                                              text: widget
+                                                  .lineItems[index].variant.name
+                                                  .substring(
+                                                      widget.lineItems[index]
+                                                              .variant.name
+                                                              .split(' ')[0]
+                                                              .length +
+                                                          1,
+                                                      widget.lineItems[index]
+                                                          .variant.name.length),
+                                              style: TextStyle(
+                                                  fontSize: 15,
+                                                  color: Colors.black),
+                                            ),
+                                          ]),
+                                        ),
                                       ),
                                     ),
                                   ],
                                 ),
                               ),
-                            ),
-                          ],
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 10.0),
+                                child: Container(
+                                  alignment: Alignment.topLeft,
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: <Widget>[
+                                      Text(
+                                        'Qty: ${widget.lineItems[index].quantity.toString()}',
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(
+                                            color: Colors.grey.shade700,
+                                            fontWeight: FontWeight.normal,
+                                            fontSize: 17),
+                                      ),
+                                      Container(
+                                        padding: EdgeInsets.only(right: 24.0),
+                                        alignment: Alignment.topLeft,
+                                        child: Text(
+                                          widget.lineItems[index].variant
+                                              .displayPrice,
+                                          textAlign: TextAlign.left,
+                                          style: TextStyle(
+                                              color: Colors.red,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 18),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         )),
                       ],
                     ),
