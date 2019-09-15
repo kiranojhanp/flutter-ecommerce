@@ -49,6 +49,11 @@ class _AuthenticationState extends State<Authentication>
     final double deviceWidth = MediaQuery.of(context).size.width;
     final double targetWidth = deviceWidth > 550.0 ? 500.0 : deviceWidth * 0.95;
     return MaterialApp(
+      color: Colors.green,
+      theme: ThemeData(
+        primarySwatch: Colors.green,
+        accentColor: Colors.white,
+      ),
       home: DefaultTabController(
         length: 2,
         child: Scaffold(

@@ -110,7 +110,7 @@ class _OrderList extends State<OrderList> {
                       padding: EdgeInsets.symmetric(vertical: 0.0),
                       child: Center(
                           child: CircularProgressIndicator(
-                        backgroundColor: Colors.green,
+                        backgroundColor: Colors.white,
                       )),
                     );
                   } else {

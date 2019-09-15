@@ -31,62 +31,6 @@ Widget productContainer(BuildContext myContext, Product product, int index) {
                               'images/placeholders/no-product-image.png'),
                         ),
                       ),
-                      // Container(
-                      //   width: 150.0,
-                      //   alignment: Alignment.topLeft,
-                      //   child: IconButton(
-                      //     alignment: Alignment.topLeft,
-                      //     icon: Icon(Icons.favorite),
-                      //     color: Colors.orange,
-                      //     onPressed: () async {
-                      //       final SharedPreferences prefs =
-                      //           await SharedPreferences.getInstance();
-                      //       String authToken = prefs.getString('spreeApiKey');
-
-                      //       if (authToken == null) {
-                      //         Scaffold.of(context).showSnackBar(SnackBar(
-                      //           content: Text(
-                      //             'Please Login to add to Favorites',
-                      //           ),
-                      //           action: SnackBarAction(
-                      //             label: 'LOGIN',
-                      //             onPressed: () {
-                      //               MaterialPageRoute route = MaterialPageRoute(
-                      //                   builder: (context) =>
-                      //                       Authentication(0));
-                      //               Navigator.push(context, route);
-                      //             },
-                      //           ),
-                      //           duration: Duration(seconds: 3),
-                      //         ));
-                      //       } else {
-                      //         Scaffold.of(context).showSnackBar(SnackBar(
-                      //           content: Text(
-                      //             'Adding to Favorites, please wait.',
-                      //           ),
-                      //           duration: Duration(seconds: 1),
-                      //         ));
-                      //         Map<String, String> headers = await getHeaders();
-                      //         http
-                      //             .post(
-                      //                 Settings.SERVER_URL + 'favorite_products',
-                      //                 body: json.encode({
-                      //                   'id': product.reviewProductId.toString()
-                      //                 }),
-                      //                 headers: headers)
-                      //             .then((response) {
-                      //           Map<dynamic, dynamic> responseBody =
-                      //               json.decode(response.body);
-
-                      //           Scaffold.of(context).showSnackBar(SnackBar(
-                      //             content: Text(responseBody['message']),
-                      //             duration: Duration(seconds: 1),
-                      //           ));
-                      //         });
-                      //       }
-                      //     },
-                      //   ),
-                      // ),
                     ],
                   ),
                   Container(
@@ -131,7 +75,7 @@ Widget productContainer(BuildContext myContext, Product product, int index) {
                     ),
                     SizedBox(height: 15),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
                         Container(
                           alignment: Alignment.topLeft,
@@ -144,6 +88,21 @@ Widget productContainer(BuildContext myContext, Product product, int index) {
                                 fontSize: 18),
                           ),
                         ),
+                        product.costPrice != null
+                            ? Container(
+                                margin: EdgeInsets.only(left: 10),
+                                alignment: Alignment.topLeft,
+                                child: Text(
+                                  product.currencySymbol + product.costPrice,
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                      decoration: TextDecoration.lineThrough,
+                                      color: Colors.grey,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 12),
+                                ),
+                              )
+                            : Container(),
                       ],
                     ),
                     SizedBox(height: 15),
@@ -162,9 +121,7 @@ Widget productContainer(BuildContext myContext, Product product, int index) {
                                   fontWeight: FontWeight.bold),
                             ),
                             TextSpan(
-                              text: double.parse(product.displayPrice.substring(
-                                          1, product.displayPrice.length)) <
-                                      699
+                              text: double.parse(product.price) < 699
                                   ? 'shipping over Rs.699'
                                   : 'shipping',
                               style:

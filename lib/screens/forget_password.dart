@@ -95,7 +95,7 @@ class _ForgetPasswordState extends State<ForgetPassword>
                       ),
                       _isLoader
                           ? CircularProgressIndicator(
-                              backgroundColor: Colors.green)
+                              backgroundColor: Colors.white)
                           : Container(
                               width: MediaQuery.of(context).size.width,
                               child: RaisedButton(
