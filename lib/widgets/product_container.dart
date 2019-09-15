@@ -96,7 +96,7 @@ Widget productContainer(BuildContext myContext, Product product, int index) {
                       child: Text(
                         'More Choices\nAvailable',
                         style: TextStyle(
-                            fontWeight: FontWeight.w300, fontSize: 14),
+                            fontSize: 12, color: Colors.grey.shade600),
                         textAlign: TextAlign.center,
                       )),
                 ],
@@ -106,6 +106,8 @@ Widget productContainer(BuildContext myContext, Product product, int index) {
               ),
               Expanded(
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.only(right: 5.0, top: 0.0),
@@ -114,7 +116,7 @@ Widget productContainer(BuildContext myContext, Product product, int index) {
                           TextSpan(
                             text: '${product.name.split(' ')[0]} ',
                             style: TextStyle(
-                                color: Colors.black,
+                                color: Color(0xff676767),
                                 fontSize: 16.0,
                                 fontWeight: FontWeight.bold),
                           ),
@@ -127,7 +129,7 @@ Widget productContainer(BuildContext myContext, Product product, int index) {
                         ]),
                       ),
                     ),
-                    SizedBox(height: 20),
+                    SizedBox(height: 15),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
@@ -144,7 +146,35 @@ Widget productContainer(BuildContext myContext, Product product, int index) {
                         ),
                       ],
                     ),
-                    SizedBox(height: 20),
+                    SizedBox(height: 15),
+                    Container(
+                      alignment: Alignment.topLeft,
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 5.0, top: 0.0),
+                        child: RichText(
+                          textAlign: TextAlign.start,
+                          text: TextSpan(children: [
+                            TextSpan(
+                              text: 'Free 1-2 Day ',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14.0,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            TextSpan(
+                              text: double.parse(product.displayPrice.substring(
+                                          1, product.displayPrice.length)) <
+                                      699
+                                  ? 'shipping over Rs.699'
+                                  : 'shipping',
+                              style:
+                                  TextStyle(fontSize: 12, color: Colors.black),
+                            ),
+                          ]),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 15),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
