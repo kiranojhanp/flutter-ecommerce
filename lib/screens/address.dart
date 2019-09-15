@@ -37,6 +37,12 @@ class _AddressPageState extends State<AddressPage> {
         builder: (BuildContext context, Widget child, MainModel model) {
       return Scaffold(
           appBar: AppBar(
+              leading: IconButton(
+                  icon: Icon(Icons.arrow_back),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  }),
+              centerTitle: false,
               title: Text('Review Order'),
               bottom: model.isLoading
                   ? PreferredSize(
@@ -120,7 +126,7 @@ class _AddressPageState extends State<AddressPage> {
                               '${model.order.displayTotal}',
                               style: TextStyle(
                                   color: Colors.red,
-                                  fontWeight: FontWeight.w600,
+                                  fontWeight: FontWeight.bold,
                                   fontSize: 16),
                             )
                           ],
@@ -134,7 +140,7 @@ class _AddressPageState extends State<AddressPage> {
     return ScopedModelDescendant<MainModel>(
         builder: (BuildContext context, Widget child, MainModel model) {
       return Container(
-        padding: EdgeInsets.all(10),
+        padding: EdgeInsets.only(left: 16.0, right: 16.0, top: 5.0),
         width: MediaQuery.of(context).size.width,
         child: FlatButton(
           // shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),

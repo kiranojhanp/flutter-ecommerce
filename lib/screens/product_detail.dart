@@ -681,11 +681,9 @@ class _ProductDetailScreenState extends State<ProductDetailScreen>
                     '${selectedProduct.currencySymbol} ${selectedProduct.costPrice}',
                     strike: true)
                 : Container(),
-            buildPriceRow('Price', selectedProduct.displayPrice, strike: false),
             discount
                 ? Column(
                     children: <Widget>[
-                      Divider(),
                       buildPriceRow(
                           'You Save:',
                           '${selectedProduct.currencySymbol}' +
@@ -706,6 +704,37 @@ class _ProductDetailScreenState extends State<ProductDetailScreen>
                     ],
                   )
                 : Container(),
+            buildPriceRow('Price', selectedProduct.displayPrice, strike: false),
+            Divider(
+              height: 1.0,
+            ),
+            Container(
+              height: 40.0,
+              alignment: Alignment.center,
+              child: Padding(
+                padding: const EdgeInsets.only(right: 5.0, top: 0.0),
+                child: RichText(
+                  textAlign: TextAlign.start,
+                  text: TextSpan(children: [
+                    TextSpan(
+                      text: 'Free 1-2 Day ',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 14.0,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    TextSpan(
+                      text: double.parse(selectedProduct.costPrice.substring(
+                                  1, selectedProduct.costPrice.length - 1)) <
+                              699
+                          ? 'shipping over Rs.699'
+                          : 'shipping',
+                      style: TextStyle(fontSize: 12, color: Colors.black),
+                    ),
+                  ]),
+                ),
+              ),
+            ),
             SizedBox(
               height: 4.0,
             ),
@@ -721,7 +750,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen>
                     color: Colors.white,
                     child: ListTile(
                       contentPadding: EdgeInsets.only(left: 10.0),
-                      title: Text('Similar Products',
+                      title: Text('You May Also like',
                           style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.w600,
@@ -826,8 +855,9 @@ class _ProductDetailScreenState extends State<ProductDetailScreen>
                         }
                       }
                     : () {},
-                backgroundColor:
-                    selectedProduct.isOrderable ? Colors.deepOrange : Colors.grey,
+                backgroundColor: selectedProduct.isOrderable
+                    ? Colors.deepOrange
+                    : Colors.grey,
               )
             : FloatingActionButton(
                 child: Icon(
